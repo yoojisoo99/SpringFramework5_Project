@@ -6,6 +6,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+
+	<!-- DI 전략1에 해당하는 Config file -->
+	
 	<!--StringPrinter 클래스를 SpringBean으로 설정 -->
 	<bean id="strPrinter" class="myspring.di.xml.StringPrinter" />
 	
@@ -18,6 +21,12 @@
 		<property name="name" value="스프링" />
 		<!-- setPrinter() 메서드 호출 -->
 		<property name="printer" ref="strPrinter" />
+	</bean>
+	
+	<!-- Hello 클래스를  Spring Bean으로 설정 Constructor Injection 방식 -->
+	<bean id="helloC" class="myspring.di.xml.Hello" scope="singleton">
+		<constructor-arg index="0" value="생성자" />
+		<constructor-arg index="1" ref="conPrinter" />
 	</bean>
 	
 
