@@ -25,5 +25,7 @@ public class HelloConfigTest {
 	@Test
 	void hello() {
 		assertEquals("Hello 자바컨피그", hello.sayHello());
+		hello.print();
+		assertEquals("Hello 자바컨피그", printer.toString());
 	}
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- Product 클래스를  Spring Bean으로 설정 Setter Injection 방식 -->
+	<bean id="product1" class="mylab.order.di.xml.Product" scope="singleton" >
+		<!-- getId() 메서드 호출 -->
+		<property name="id" value="P001" />
+		<!-- getName() 메서드 호출 -->
+		<property name="name" value="노트북" />
+		<!-- getPrice() 메서드 호출 -->
+		<property name="price" value="150000" />
+	</bean>
+		
+	<!-- Product 클래스를  Spring Bean으로 설정 Constructor Injection 방식 -->
+	<bean id="product2" class="mylab.order.di.xml.Product" scope="singleton">
+		<constructor-arg name="id" value="P002" />
+		<constructor-arg name="name" value="스마트폰" />
+		<constructor-arg name="price" value="800000" />
+	</bean>
+	
+	<!-- ShoppingCart 클래스를  Spring Bean으로 설정 -->
+	<!-- setProducts() 메서드에 대한 setter injection 설정 -->
+	<bean id="cart" class="mylab.order.di.xml.ShoppingCart" >
+		<property name="products">
+	      <list>
+	         <ref bean="product1"/>
+	         <ref bean="product2"/>
+	       </list>
+		</property>
+	</bean>
+	
+	<!-- OrderService 클래스를  Spring Bean으로 설정 -->
+	<bean id="order" class="mylab.order.di.xml.OrderService" >
+		<property name="shoppingCart" ref="cart" />
+	</bean>
+		
+</beans>
