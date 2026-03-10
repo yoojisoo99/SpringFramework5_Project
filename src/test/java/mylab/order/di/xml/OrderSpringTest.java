@@ -23,7 +23,7 @@ class OrderSpringTest {
 		assertEquals(2, cart.getProducts().size());
 		assertEquals("노트북", cart.getProducts().get(0).getName());
 		assertEquals("스마트폰", cart.getProducts().get(1).getName());
-		System.out.println(cart.getProducts().size());
+//		System.out.println(cart.getProducts().size());
 	}
 	
 	@Test
@@ -31,7 +31,7 @@ class OrderSpringTest {
 		OrderService order = context.getBean("order", OrderService.class);
 		double expectedTotal = 950000.0;
 	    assertEquals(expectedTotal, order.calculateOrderTotal());
-	    System.out.println(order.calculateOrderTotal());
+//	    System.out.println(order.calculateOrderTotal());
 	}
 	
 	
